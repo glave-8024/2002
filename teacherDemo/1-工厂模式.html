@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+<script>
+// 工厂模式
+// function factory(n,s,a){
+//     var obj = {};//原料
+//     obj.name = n;//加工
+//     obj.sex = s;//加工
+//     obj.age = a;//加工
+//     obj.sayHi = function (){//加工
+//         console.log('hi，大家好');
+//     }
+//     return obj;//出厂
+// }
+// var zhangsan = factory('张三','男',23);
+// var wangwu = factory('王五','男',25);
+
+// 构造函数 -》 内置的工厂模式
+// function Cat(c){
+//     // var this = {};
+//     this.color = c;
+//     // return this;
+// }
+// var cat1 = new Cat('blue');
+// console.log(cat1);
+
+
+// var cars = {
+//     carA: function (){
+//         this.color = 'red';
+//         this.engine = 'v4引擎';
+//         this.speed = '180km/h';
+//         this.drive = function (){
+//             console.log('最高时速'+this.speed);
+//         }
+//     },
+//     carB: function (){
+//         this.color = 'blue';
+//         this.engine = 'v6引擎';
+//         this.speed = '250km/h';
+//         this.drive = function (){
+//             console.log('最高时速'+this.speed);
+//         }
+//     },
+//     carC: function (){
+//         this.color = 'green';
+//         this.engine = 'v8引擎';
+//         this.speed = '380km/h';
+//         this.drive = function (){
+//             console.log('最高时速'+this.speed);
+//         }
+//     }
+// }
+
+// var car1 = new cars.carA();
+// var car2 = new cars.carB();
+// 在外部很容易被修改、破坏原有结构等
+// cars.carB = '12313';
+
+var createCar = (function (){
+    var cars = {
+        carA: function (){
+            this.color = 'red';
+            this.engine = 'v4引擎';
+            this.speed = '180km/h';
+            this.drive = function (){
+                console.log('最高时速'+this.speed);
+            }
+        },
+        carB: function (){
+            this.color = 'blue';
+            this.engine = 'v6引擎';
+            this.speed = '250km/h';
+            this.drive = function (){
+                console.log('最高时速'+this.speed);
+            }
+        },
+        carC: function (){
+            this.color = 'green';
+            this.engine = 'v8引擎';
+            this.speed = '380km/h';
+            this.drive = function (){
+                console.log('最高时速'+this.speed);
+            }
+        }
+    }
+    return function factory(config){
+        return new cars[config]();
+    }
+})();
+
+var car3 = createCar('carC');
+console.log(car3);
+
+
+
+</script>
+</body>
+</html>

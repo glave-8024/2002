@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="show"></div>
+
+<script>
+// 不使用代理模式
+// function Gift(n,p){
+//     this.name = n;
+//     this.price = p;
+// }
+// var boy = {
+//     sendGift: function (target){
+//         var flower = new Gift('玫瑰',9.9);
+//         target.receiveGift(flower);
+//     }
+// }
+// var girl = {
+//     receiveGift: function (gift){
+//         console.log('收到的礼物是: '+gift.name);
+//     }
+// }
+// boy.sendGift(girl);
+
+
+// 使用代理模式（当前场景确实没什么意义）
+// function Gift(n,p){
+//     this.name = n;
+//     this.price = p;
+// }
+// var boy = {
+//     sendGift: function (target){
+//         var flower = new Gift('玫瑰',9.9);
+//         target.receiveGift(flower);
+//     }
+// }
+// var guimi = {//代理人
+//     receiveGift: function (gift){
+//         girl.receiveGift(gift);
+//     }
+// }
+// var girl = {
+//     receiveGift: function (gift){
+//         console.log('收到的礼物是: '+gift.name);
+//     }
+// }
+// boy.sendGift(guimi);
+
+
+// 假设女孩收到礼物时，心情好，表白成功概率66%，心情不好成功概率2.222%
+/* function Gift(n,p){
+    this.name = n;
+    this.price = p;
+}
+var boy = {
+    sendGift: function (target){
+        // var flower = new Gift('玫瑰',9.9);
+        var house = new Gift('别墅',5000000);
+        target.receiveGift(house);
+    }
+}
+var guimi = {//代理对象
+    receiveGift: function (gift){
+        // girl.receiveGift(gift);
+        // setTimeout(function (){
+        //     girl.receiveGift(gift);
+        // },2000);
+        if (gift.price < 1000) {
+            console.log('没收');
+        } else {
+            girl.receiveGift(gift);
+        }
+    }
+}
+var girl = {//本体对象
+    receiveGift: function (gift){
+        console.log('收到的礼物是: '+gift.name);
+    }
+}
+boy.sendGift(guimi); */
+
+
+var show = document.querySelector('.show');
+// 图片预加载
+// var myImage = (function (){
+//     var showImg = new Image();
+//     var loadImg = new Image();
+//     loadImg.onload = function (){
+//         showImg.src = loadImg.src;
+//     }
+//     return {
+//         setSrc: function (dom,src){
+//             loadImg.src = src;
+//             showImg.src = './loading.gif';
+//             dom.appendChild(showImg);
+//         }
+//     }
+// })();
+// myImage.setSrc(show,'http://pic39.photophoto.cn/20160411/1155116845138548_b.jpg');
+
+
+// 代理模式图片预加载
+var myImage = (function (){//本体对象
+    var showImg = new Image();
+    return {
+        setSrc: function (dom,src){
+            showImg.src = src;
+            dom.appendChild(showImg);
+        }
+    }
+})();
+// myImage.setSrc(show,'http://pic39.photophoto.cn/20160411/1155116845138548_b.jpg');
+
+var proxyImage = (function (){//代理对象
+    var loadImg = new Image();
+    var wrap = null;
+    loadImg.onload = function (){
+        myImage.setSrc(wrap,loadImg.src);
+    }
+    return {
+        setSrc: function (dom,src){
+            wrap = dom;
+            loadImg.src = src;
+            myImage.setSrc(dom,'./loading.gif');
+        }
+    }
+})();
+proxyImage.setSrc(show,'http://pic39.photophoto.cn/20160411/1155116845138548_b.jpg');
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+// 面试题：
+// var instance = null;
+// function Fun() {
+//     // 在函数中添加代码，使下面的运行结果成立
+//     if (Fun.instance){
+//         return Fun.instance;// 第二次第三次。。。第N次都执行这里
+//     }
+//     this.attr = 'hello world';
+//     return Fun.instance = this;//只有第一次走这里
+// }
+
+// Fun.instance = 123;//容易被外界干扰
+
+// var obj1 = new Fun();
+// var obj2 = new Fun();
+// console.log(obj1 === obj2); //true
+// console.log(obj1.attr); // 'hello world'
+
+// console.log( {} === {} );//false
+
+
+
+// singleLogin = factory
+// var singleLogin = (function (){
+//     var instance = null;
+//     var createSingle = function (){
+//         if (instance) {// 管理单例的逻辑
+//             return instance;
+//         }
+//         this.init();
+//         return instance = this;
+//     }
+//     // 创建登录框
+//     createSingle.prototype.init = function (){
+//         var div = document.createElement('div');
+//         div.innerHTML = '登录框';
+//         document.body.appendChild(div);
+//         return div;
+//     }
+//     return function factory(){
+//         return new createSingle();
+//     }
+// })();
+// console.log( singleLogin() === singleLogin() );
+
+// 管理单例的逻辑（公用）
+var createSingle = function outer(){
+    var instance;
+    return function inner(fn){
+        if (instance) {
+            return instance;
+        }
+        return instance = new fn();
+    }
+};
+
+var login = function (){
+    var div = document.createElement('div');
+    div.innerHTML = '登录框';
+    document.body.appendChild(div);
+    return div;
+}
+var singleLogin = createSingle();
+console.log( singleLogin(login) === singleLogin(login));
+
+var mask = function (){
+    var div = document.createElement('div');
+    div.className = 'mask';
+    document.body.appendChild(div);
+    return div;
+}
+var singleMask = createSingle();
+console.log( singleMask(mask) === singleMask(mask));
+
+console.log( singleLogin(login) );
+console.log( singleMask(mask) );
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+<script>
+function Observer(){
+    // 缓存列表
+    this.cacheList = {};
+    // {
+    //     'eventName': [cb],
+    //     'eventName2': [cb1,cb2,cb3,cb4],
+    //     'eventName3': [cb1,cb2]
+    // }
+}
+Observer.prototype = {
+    constructor: Observer,
+    // 发布消息
+    publish: function (eventName,message){
+        if (!this.cacheList[eventName]) {
+            return;// 没有此类事件
+        }
+        // 取出对象中eventName属性对应的数组
+        // 遍历数组，把数组中的所有回调函数执行并传入数据
+        this.cacheList[eventName].forEach(function (callback){
+            callback(message);
+        })
+    },
+
+    // 订阅消息
+    subscribe: function (eventName,callback){
+        if (!this.cacheList[eventName]) {
+            // 还没有订阅过此类事件
+            this.cacheList[eventName] = [];
+        }
+        // 把回调函数插入到eventName属性对应的数组中
+        this.cacheList[eventName].push(callback);
+    },
+
+    // 取消订阅
+    unsubscribe: function (eventName,callback){
+        if (!eventName) {//没有参数调用
+            // 移除所有事件及对应的回调函数
+            this.cacheList = {};
+        } else if (eventName && !callback) {// 只有一个参数调用
+            // 移除指定事件的所有回调函数
+            delete this.cacheList[eventName];
+        } else {// 两个参数调用
+            // 移除指定事件的指定函数
+            this.cacheList[eventName] = this.cacheList[eventName].filter(function (cb){
+                return cb !== callback;
+            })
+        }
+    }
+}
+
+// 使用
+var obs = new Observer();
+
+// 订阅消息
+obs.subscribe('houseTypeA',function (data){
+    console.log('收到的消息是：'+data);
+});
+obs.subscribe('houseTypeA',function (data){
+    console.log('收到的消息是：'+data);
+});
+obs.subscribe('houseTypeB',function (data){
+    console.log('收到的消息是：'+data);
+});
+
+
+// 发布消息
+obs.publish('houseTypeA','尊贵客户，您关注的户型A，我司定义2020年7月1日开盘，单价50000/平，建筑面积90平');
+obs.publish('houseTypeB','尊贵客户，您关注的户型B，我司定义2020年7月2日开盘，单价48000/平，建筑面积120平');
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+// js模拟其他面向对象语言实现的策略模式
+// var performanceA = function () {}; // 策略类  
+// performanceA.prototype.calculate = function (salary) {
+//     return salary * 8;
+// }
+// var performanceB = function () {}; // 策略类
+// performanceB.prototype.calculate = function (salary) {
+//     return salary * 5;
+// }
+// var performanceC = function () {}; // 策略类
+// performanceC.prototype.calculate = function (salary) {
+//     return salary * 3;
+// }
+
+// var Bonus = function () { // 奖金类（环境类）
+//     this.salary = null; // 原始工资
+//     this.strategy = null; // 绩效等级对应的策略对象
+// }
+// Bonus.prototype.setSalary = function (salary) {
+//     this.salary = salary; // 设置原始工资
+// }
+// Bonus.prototype.setStrategy = function (strategy) {
+//     this.strategy = strategy; // 设置绩效等级对应的策略对象
+// }
+// Bonus.prototype.getBonus = function () { // 取得奖金数额
+//     // 把计算奖金的操作委托给对应的策略对象
+//     return this.strategy.calculate(this.salary);
+// }
+// var bonus = new Bonus(); // 奖金类实例
+// bonus.setSalary(10000); // 设置原始工资
+// bonus.setStrategy(new performanceA()); //设置策略对象
+// console.log(bonus.getBonus()); // 80000
+// bonus.setStrategy(new performanceB()); //设置策略对象
+// console.log(bonus.getBonus()); // 50000
+
+
+
+// js实现上面的策略模式
+var strategy = {//策略对象
+    performanceA: function (salary){
+        return salary * 8;
+    },
+    performanceB: function (salary){
+        return salary * 5;
+    },
+    performanceC: function (salary){
+        return salary * 3;
+    }
+}
+var Bonus = {// 环境类，提供给用户访问
+    getBonus: function (salary,performance){
+        return strategy[performance](salary);
+    }
+}
+console.log( Bonus.getBonus(20000,'performanceA') );
+console.log( Bonus.getBonus(10000,'performanceB') );
+
+
+var strategy = { // 策略对象
+    isPhone: function (value){
+        var reg = /^(1|\+861)[3-9]{1}\d{9}$/;
+        if (reg.test(value)) {
+            return '格式正确！';
+        }
+        return '请正确输入手机号！';
+    },
+    isNumber: function (value){
+        var reg = /(^[0-9]*$)/;
+        if (reg.test(value)) {
+            return '格式正确！';
+        }
+        return '只能输入数字！';
+    },
+    isEmpty: function (value){
+        if (value === '' || /^\s+$/.test(value)) {
+            return true;
+        }
+        return false;
+    }
+}
+var verify = function (type,value){ //环境类，接受用户请求
+    return strategy[type](value);
+}
+console.log( verify('isEmpty','  ') );
+console.log( verify('isPhone','1385555999') );
+
+
+</script>
+</body>
+</html>
