@@ -1,0 +1,113 @@
+.header {
+  height: 62px;
+  width: 100%;
+  background-color: #000000;
+  border-top: 2px solid #DDDCE1;
+  border-bottom: 2px solid #C804F6;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999; }
+  .header .logo {
+    float: left;
+    width: 228px;
+    height: 62px; }
+    .header .logo a {
+      width: 100%;
+      height: 100%;
+      display: block; }
+      .header .logo a img {
+        width: 155px;
+        height: 28px;
+        position: relative;
+        top: 17px;
+        left: 15px; }
+  .header .topTap {
+    float: left;
+    width: 658px;
+    height: 62px;
+    margin-left: 18%; }
+    .header .topTap ul li {
+      width: 131px;
+      height: 100%;
+      float: left; }
+      .header .topTap ul li a {
+        display: block;
+        font-size: 16px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 62px; }
+      .header .topTap ul li:hover a {
+        font-weight: bold; }
+  .header .actTab1 {
+    height: 62px;
+    width: 1920px;
+    position: fixed;
+    top: 62px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    z-index: 1;
+    left: 0; }
+    .header .actTab1 li {
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 18px;
+      line-height: 62px;
+      text-align: center; }
+      .header .actTab1 li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #000000;
+        background-color: #fff; }
+      .header .actTab1 li:hover a {
+        font-weight: bold;
+        border: 1px solid #eee;
+        border-top: none;
+        border-bottom: none; }
+  .header .login {
+    float: right;
+    width: 174px;
+    height: 62px; }
+    .header .login a {
+      width: 26px;
+      height: 26px;
+      display: block;
+      color: #fff;
+      float: left;
+      margin: 17px 16px 17px 16px; }
+    .header .login .myAct {
+      position: fixed;
+      height: 102px;
+      width: 150px;
+      top: 62px;
+      right: 15px;
+      background-color: #fff;
+      color: #000000;
+      border-radius: 5px 10px;
+      -webkit-border-radius: 5px 10px;
+      -moz-border-radius: 5px 10px;
+      -ms-border-radius: 5px 10px;
+      -o-border-radius: 5px 10px;
+      display: none; }
+      .header .login .myAct a {
+        display: block;
+        height: 50px;
+        width: 100%;
+        margin: 0;
+        border-bottom: 2px solid #ccc; }
+        .header .login .myAct a i {
+          display: block;
+          width: 100%;
+          color: #000000;
+          height: 50px;
+          font-size: 16px;
+          line-height: 50px;
+          text-indent: 10px; }
+      .header .login .myAct a:last-child {
+        border: none; }
+    .header .login .myCenter:hover + .myAct {
+      display: block; }

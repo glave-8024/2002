@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/search.css">
+</head>
+<body>
+        <div class="wrap">
+                <form method="POST" action="http://www.baidu.com">
+                <input type="text" class="ipt" placeholder="在此输入你搜索的关键字"  onclick="this.value=' ';focus()">
+
+                <input class="btn"  type="submit" value="搜索">
+
+</form>
+                <ul class="list">
+                    <!-- <li>12306</li> -->
+                    <!-- <li>12315</li> -->
+                </ul>
+        </div>
+        <div class="suggested">
+                <span class="suggested-title" data-alertmessage="请输入更多词语">热门产品</span>
+                <ul class="keywords">
+                    <li><a href="/search/?keyword=%E8%8D%A3%E8%80%80V30">荣耀V30</a></li>
+                    <li><a href="/search/?keyword=%E8%8D%A3%E8%80%8020">荣耀20</a></li>
+                    <li><a href="/search/?keyword=%E8%8D%A3%E8%80%809X">荣耀9X</a></li>
+                    <li><a href="/search/?keyword=%E8%8D%A3%E8%80%80%E6%99%BA%E6%85%A7%E5%B1%8F">荣耀智慧屏</a></li>
+                    <li><a href="/search/?keyword=%E8%8D%A3%E8%80%80MagicBook%20Pro">荣耀MagicBook Pro</a></li>
+                    <li><a href="/search/?keyword=HONOR%20MagicWatch%202">HONOR MagicWatch 2</a></li>
+                </ul>
+              </div>
+<div class="show"></div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="../../jquery-1.8.3.js"></script>
+<script>
+$('.ipt').keyup(function (){
+
+    $.ajax({
+        url: 'http://suggestion.baidu.com/su',
+    //    url:"https://nebula-collector.huawei.com/api" ,
+        type: 'get',
+        data: 'wd='+$('.ipt').val(),
+        dataType: 'jsonp',
+        jsonp: 'cb',
+        // jsonpCallback: 'mycallback',//可选
+        success: function (json){
+            // $('.list').empty();//清空list里面的内容
+            $('.list').html('');//清空list里面的内容
+            $.each(json.s,function (index,item){
+                $('.list').append('<li>'+item+'</li>');
+            })
+        }
+    });
+
+
+})
+
+</script>
+<script>
+
+    
+$('.btn').click(function (){
+    $.ajax({
+        url: 'http:/localhost/2.5%20Tao%20Shujian/6.28%20Sass/teacherDemo/sass-demo/detail.php',
+        type: 'get',
+        dataType: 'text',
+        success: function (data){
+            $('.show').html(data);
+        }
+    })
+})
+
+
+</script>
+</body>
+</html>

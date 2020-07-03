@@ -1,0 +1,43 @@
+*{
+    // word-break: break-all;
+    margin: 0;
+    padding: 0;
+    /* 自动换行 */
+    text-decoration: none !important;
+}
+html,h1,h2,h3,h4,h5,h6,hr,p,dl,dt,dd,ul,ol.li,pre,input,textarea,th,td,fieldset,iframe {
+    margin: 0;
+    padding: 0;
+}
+ul,ol,li,a{
+    list-style-type: none;
+    list-style: none;
+}
+a{
+    text-decoration:none;
+    outline:none;
+}
+html,body{
+    position: static;
+}
+html {
+    font-family:sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust:100％;
+}
+dfn，em，th，var {
+    font-style: normal;
+     font-weight: 400;
+}
+h1，h2，h3，h4，h5，h6 {
+    font-size:100％;
+}
+a,area{
+    outline:none;
+    /* blur:expression(this.onFocus() = this.blur()); */
+}
+img {
+    border:0;
+    vertical-align:middle;
+}
+

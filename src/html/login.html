@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <title>荣耀5G生活</title>
+</head>
+<body>
+    <div class="header">
+        <h2><a href="javascript:" title="HONOR TO BE NO1">
+            HONOR</a>
+        </h2>
+    </div>
+    <div id="main">
+        <div class="centre">
+            <h2>华为账号登录</h2>
+            <div class="loginLeft">
+                <a href="javascript:" title="打开微信扫一扫">
+                    <img src="../imgs/21.png" alt="">
+                </a>
+                <span>若您使用华为手机，请进入“设置”>“华为帐号”扫码登录。
+                </span>
+            </div>
+            <div class="loginRight">
+                <input type="text" placeholder="手机号/邮件地址/华为号" class="user">
+                <input type="password" placeholder="密码" class="pass">
+                <a href="javascript:">短信验证码登录</a>
+                <!-- <input type="button" class="register" value="登录"> -->
+                <button class="register">登录</button>
+                <div class="borA">
+                    <a href="javascript:" >注册</a>
+                    <a href="javascript:" >忘记密码</a>
+                    <a href="javascript:" >更多</a>
+
+                </div>
+                
+
+            </div>
+        </div>
+       
+    </div>
+    <!-- footer -->
+    <div class="footer">
+        <div class="footerTop">
+            <span>华为帐号与云空间用户协议</span>
+            <span>关于华为帐号与云空间隐私的声明</span>
+            <span>常见问题</span>
+            <span>Cookies</span>
+            <h3>Copyright © 2011-2020  华为软件技术有限公司  版权所有  保留一切权利  苏B2-20070200号 | 苏ICP备09062682号-9</h3>
+        </div>
+        
+    </div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $('.register').click(function (){
+        $.ajax({
+            url: 'http://localhost/2.5%20Tao%20Shujian/6.28%20Sass/teacherDemo/sass-demo/login.php',
+            type:'post',
+            data:{
+                user:$('.user').val(),
+                pass:$('.pass').val()
+            },
+            dataType:'json',
+            success: function (data){
+                console.log(data);
+                if (data.err == 0) {
+                    localStorage.setItem('username',$('.user').val());
+                    localStorage.setItem('userpass',$('.pass').val());
+                    localStorage.setItem('isLogin','已登录');
+                    location.href ='http://localhost/2.5%20Tao%20Shujian/6.28%20Sass/teacherDemo/sass-demo/dist/html/goodDetail.html';
+                }else {
+                    alert(data.msg);
+                }
+                
+            }
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+.footer {
+  width: 100%;
+  height: 570px;
+  background-color: #F5F5F5;
+  color: #000000;
+  border-top: 1px solid #DCDCDC; }
+  .footer #footerLeft {
+    height: 480px;
+    float: left; }
+    .footer #footerLeft table {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 56px;
+      padding-top: 10px; }
+      .footer #footerLeft table tbody {
+        width: 100%;
+        border-right: 1px solid #B8B8B8;
+        overflow: hidden; }
+      .footer #footerLeft table tr {
+        width: 100%;
+        height: 30px; }
+        .footer #footerLeft table tr .boldTd {
+          font-weight: bold;
+          color: #000000;
+          overflow: hidden; }
+        .footer #footerLeft table tr td {
+          width: 98px;
+          height: 26px;
+          margin-right: 49px;
+          overflow: hidden; }
+          .footer #footerLeft table tr td a {
+            display: inline-block;
+            height: 26px;
+            line-height: 26px;
+            font-size: 14px;
+            color: #666666;
+            overflow: hidden; }
+  .footer #footerRight {
+    height: 480px;
+    float: left;
+    padding-top: 56px; }
+    .footer #footerRight a {
+      display: inline-block;
+      width: 28px;
+      height: 28px; }
+    .footer #footerRight i {
+      display: inline-block;
+      width: 28px;
+      height: 28px; }
+    .footer #footerRight .iconfont {
+      font-size: 22px; }
+    .footer #footerRight h5 {
+      font-size: 18px;
+      display: inline-block; }
+    .footer #footerRight h3 {
+      margin-top: 10px;
+      font-weight: bold; }
+  .footer .footerBottom {
+    width: 100%;
+    text-align: center; }
+    .footer .footerBottom span {
+      height: 18px;
+      font-size: 12px;
+      line-height: 18px;
+      padding: 0 20px;
+      color: #191919;
+      display: inline-block;
+      border-right: 1px solid #ccc;
+      margin: 5px auto;
+      margin-top: 30px; }
+    .footer .footerBottom .lastSpan {
+      border: none; }
+    .footer .footerBottom h3 {
+      width: 100%;
+      height: 18px;
+      font-size: 12px;
+      line-height: 18px;
+      color: #000000;
+      margin: 8px auto; }
+      .footer .footerBottom h3 a {
+        display: inline-block;
+        width: 14px;
+        height: 14px; }
+        .footer .footerBottom h3 a img {
+          width: 100%;
+          height: 100%; }

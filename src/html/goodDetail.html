@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<button class=".btn">搜索</button>
+<div class="show"></div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    
+
+if (!localStorage.getItem('isLogin')) {
+    location.href = 'http://localhost/2.5%20Tao%20Shujian/6.28%20Sass/teacherDemo/sass-demo/dist/html/login.html'
+}else{
+    location.href = 'http://localhost/2.5%20Tao%20Shujian/6.28%20Sass/teacherDemo/sass-demo/dist/html/index-2.html'
+}
+
+$('.btn').click(function (){
+    $.ajax({
+        url: 'http:/localhost/2.5%20Tao%20Shujian/6.28%20Sass/teacherDemo/sass-demo/detail.php',
+        type: 'get',
+        dataType: 'text',
+        success: function (data){
+            $('.show').html(data);
+        }
+    })
+})
+
+
+</script>
+</body>
+</html>

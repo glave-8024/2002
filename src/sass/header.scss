@@ -1,0 +1,152 @@
+$twidth:1920px;
+$theight:62px;
+
+.header{
+    height: $theight;
+    width: 100%;
+    background-color: #000000;
+    border-top: 2px solid #DDDCE1;
+    border-bottom: 2px solid #C804F6;
+    overflow: hidden;
+    position: fixed;
+    left: 0; top:0;
+    z-index: 999;
+
+    .logo{
+        float: left;
+        width: 228px;
+        height: $theight;
+        a{
+            width: 100%;
+            height: 100%;
+            display: block;
+            img{
+                width: 155px;
+                height: 28px;
+                position: relative;
+                top: 17px;
+                left: 15px;
+        }
+        }
+        
+    }
+    
+    .topTap{
+        float: left;
+        width: 658px;
+        height: $theight;
+        margin-left:18%;
+        ul{
+            li{
+                width: 131px;
+                height: 100%;
+                float: left;
+                a{
+                    display: block;
+                    font-size: 16px;
+                    color: #ffffff;
+                    text-align: center;
+                    line-height: $theight;
+                }
+                &:hover a{
+                    font-weight: bold;
+                }
+
+
+
+            }
+        }
+    }
+    
+
+    .actTab1{
+        height: $theight;
+        width: $twidth;
+        position: fixed;
+        top: $theight;
+        box-sizing: border-box;
+        border-bottom: 1px solid #eee;
+        background-color: #fff;
+        z-index: 1;
+        left: 0;
+        // display: none;
+            li{
+                display: block;
+                width: 100%;
+                height: 100%;
+                font-size: 18px;
+                line-height: $theight;
+                text-align: center;
+                a{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    color: #000000;   
+                    background-color: #fff; 
+                }
+                &:hover a{
+                font-weight:bold;
+                border: 1px solid #eee;
+                border-top: none;
+                border-bottom: none;
+            }
+
+            }  
+    }
+    
+
+    
+    .login{
+        float: right;
+        width: 174px;
+        height: $theight;
+        a{
+            width: 26px;
+            height: 26px;
+            display: block;
+            color: #fff;
+            float: left;
+            margin: 17px 16px 17px 16px;
+        }
+
+        .myAct{
+            position: fixed;
+            height: 102px;
+            width: 150px;
+            top: $theight;
+            right: 15px;
+            background-color: #fff;
+            color: #000000;
+            border-radius: 5px 10px            ;
+            -webkit-border-radius: 5px 10px            ;
+            -moz-border-radius: 5px 10px            ;
+            -ms-border-radius: 5px 10px            ;
+            -o-border-radius: 5px 10px            ;
+            display: none;
+            a{
+                display: block;
+                height: 50px;
+                width: 100%;
+                margin: 0;
+                border-bottom: 2px solid #ccc;
+
+                i{
+                    display: block;
+                    width: 100%;
+                    color: #000000;
+                    height: 50px;
+                    font-size: 16px;
+                    line-height: 50px;
+                    text-indent: 10px;
+                }
+            }
+            a:last-child{
+                border: none;
+            }
+        }
+        .myCenter:hover + .myAct{
+            display: block;
+        }
+
+    }
+}
